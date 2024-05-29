@@ -1,61 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import { countriesPool } from '../data/allCountries'
 
-interface ICountries {
-  countryName: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+interface ICountriesProps {
+    countryName: string
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const CountriesOptions = (props: ICountries) => {
-  const { countryName, onClick } = props;
+interface IOptionsGridProps {
+    sessionCountryName: string
+}
 
-  return (
-    <>
-      <button onClick={onClick}>{countryName}</button>
-    </>
-  );
-};
+const CountriesOptions = (props: ICountriesProps) => {
+    const { countryName, onClick } = props
 
-const OptionsGrid = () => {
-  const [selection, setSelection] = useState<string | null>(null);
-  const [isSelectionCorrect, setIsSelectionCorrect] = useState<boolean>(false);
-  const [emoji, setEmoji] = useState<string>("🌐");
+    return (
+        <>
+            <button onClick={onClick}>{countryName}</button>
+        </>
+    )
+}
 
-  const tempOptions = ["Mauritius", "Australia", "France", "England"];
+const OptionsGrid = (props: IOptionsGridProps) => {
+    const { sessionCountryName } = props
 
-  useEffect(() => {
-    if (selection === "Mauritius") {
-      setIsSelectionCorrect(true);
-      setEmoji("🤗");
+    const [selection, setSelection] = useState<string | null>(null)
+    const [isSelectionCorrect, setIsSelectionCorrect] = useState<boolean>(false)
+    const [emoji, setEmoji] = useState<string>('🌐')
+
+    const sessionPoolRaw = [...countriesPool, sessionCountryName]
+    const sessionPool = sessionPoolRaw.sort()
+
+    useEffect(() => {
+        if (selection === sessionCountryName) {
+            setIsSelectionCorrect(true)
+            setEmoji('🤗')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selection])
+
+    const handleCountrySelection = (selectedCountry: string) => {
+        if (!isSelectionCorrect) {
+            setSelection(selectedCountry)
+        }
     }
-  }, [selection]);
 
-  const handleCountrySelection = (selectedCountry: string) => {
-    if (!isSelectionCorrect) {
-      setSelection(selectedCountry);
-    }
-  };
+    return (
+        <>
+            <h2>{emoji}</h2>
+            {!isSelectionCorrect ? (
+                <div className="options-grid">
+                    {sessionPool.map((country) => (
+                        <CountriesOptions
+                            key={country}
+                            countryName={country}
+                            onClick={() => {
+                                handleCountrySelection(country)
+                                if (selection !== 'Mauritius') setEmoji('😱')
+                            }}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <h3>Indeed, this is {sessionCountryName}'s flag!</h3>
+            )}
+        </>
+    )
+}
 
-  return (
-    <>
-      <h2>{emoji}</h2>
-      {!isSelectionCorrect ? (
-        <div className="options-grid">
-          {tempOptions.map((country) => (
-            <CountriesOptions
-              key={country}
-              countryName={country}
-              onClick={() => {
-                handleCountrySelection(country);
-                if (selection !== "Mauritius") setEmoji("😱");
-              }}
-            />
-          ))}
-        </div>
-      ) : (
-        <h3>Indeed, this is the Mauritian flag!</h3>
-      )}
-    </>
-  );
-};
-
-export default OptionsGrid;
+export default OptionsGrid

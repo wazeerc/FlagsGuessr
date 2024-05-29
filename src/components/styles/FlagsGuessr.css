@@ -4,12 +4,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: .4rem;
-    height: 100vh;
+    gap: 0.4rem;
+    height: 98vh;
     text-align: center;
 
     .flag {
-        height: 20rem;
+        width: 30rem;
     }
 
     .options-grid {
@@ -26,7 +26,7 @@
 @media screen and (max-width: 768px) {
     .flags-guessr-main {
         .flag {
-            height: 13.4rem;
+            width: 13.4rem;
         }
 
         .options-grid {
