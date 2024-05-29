@@ -1,12 +1,12 @@
-import FlagsGuessr from "./components/FlagsGuessr";
-import "./App.css";
+import FlagsGuessr from './components/FlagsGuessr'
+import './App.css'
 
 const App = () => {
-  return (
-    <>
-      <FlagsGuessr />
-    </>
-  );
-};
+    return (
+        <>
+            <FlagsGuessr />
+        </>
+    )
+}
 
-export default App;
+export default App

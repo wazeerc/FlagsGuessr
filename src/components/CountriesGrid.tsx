@@ -1,26 +1,26 @@
-import { ICountryNamesAndCode } from "../interfaces/CountriesModel";
-import { getFlag } from "../utils/fetchData";
+import { ICountryNamesAndCode } from '../interfaces/CountriesModel'
+import { getFlag } from '../utils/fetchData'
 
 interface ICountriesGridProps {
-  sessionCountry: ICountryNamesAndCode;
+    sessionCountry: ICountryNamesAndCode
 }
 
 const CountriesGrid = (props: ICountriesGridProps) => {
-  const { sessionCountry } = props;
-  const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase());
+    const { sessionCountry } = props
+    const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase())
 
-  return (
-    <>
-      <h1>What flag is this?</h1>
-      <section id="countries-grid">
-        <img
-          className="flag"
-          alt={sessionCountry.name}
-          src={sessionCountryFlag}
-        ></img>
-      </section>
-    </>
-  );
-};
+    return (
+        <>
+            <h1>What flag is this?</h1>
+            <section id="countries-grid">
+                <img
+                    className="flag"
+                    alt={sessionCountry.name}
+                    src={sessionCountryFlag}
+                ></img>
+            </section>
+        </>
+    )
+}
 
-export default CountriesGrid;
+export default CountriesGrid
