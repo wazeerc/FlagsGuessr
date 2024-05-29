@@ -1,5 +1,3 @@
-import React from "react";
-
 import FlagsGuessr from "./components/FlagsGuessr";
 
 import "./App.css";
