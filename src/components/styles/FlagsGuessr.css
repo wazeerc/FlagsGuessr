@@ -1,12 +1,39 @@
-.flags-guessr-main{
+.flags-guessr-main {
+    color: aliceblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: .4rem;
     height: 100vh;
+    text-align: center;
 
-    .mu{
-        height: 25rem;
+    .flag {
+        height: 20rem;
+    }
+
+    .options-grid {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 2rem;
+
+        button {
+            width: 14rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .flags-guessr-main {
+        .flag {
+            height: 13.4rem;
+        }
+
+        .options-grid {
+            button {
+                width: 9rem;
+                font-size: 1rem;
+            }
+        }
     }
 }
