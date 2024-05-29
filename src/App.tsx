@@ -1,5 +1,4 @@
 import FlagsGuessr from "./components/FlagsGuessr";
-
 import "./App.css";
 
 const App = () => {
