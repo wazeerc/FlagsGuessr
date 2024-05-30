@@ -72,9 +72,11 @@
 }
 
 @media screen and (max-width: 768px) {
-    .flags-guessr-main {
-        height: 100vh;
+    .flags-guessr-container {
+        overflow: hidden;
+    }
 
+    .flags-guessr-main {
         .flag {
             width: 18rem;
         }
@@ -105,4 +107,5 @@ a {
 footer {
     color: #303030;
     font-size: .8rem;
+    padding-bottom: .4rem;
 }
