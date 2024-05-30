@@ -29,7 +29,7 @@ export const NextButton = (props: any) => {
     return (
         <>
             <button className="next-button" onClick={nextFlag}>
-                Next
+                Refresh
             </button>
         </>
     )
