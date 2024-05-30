@@ -12,7 +12,7 @@ const CountriesGrid = (props: ICountriesGridProps) => {
     return (
         <>
             <h1>What flag is this?</h1>
-            <section id="countries-grid">
+            <section className="countries-grid">
                 <img
                     className="flag"
                     alt={sessionCountry.name}

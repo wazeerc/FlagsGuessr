@@ -10,6 +10,10 @@ interface IOptionsGridProps {
     sessionCountryName: string
 }
 
+interface IGuessesProps {
+    guessesLeft: number
+}
+
 const CountriesOptions = (props: ICountriesProps) => {
     const { countryName, onClick } = props
 
@@ -20,12 +24,38 @@ const CountriesOptions = (props: ICountriesProps) => {
     )
 }
 
+export const NextButton = (props: any) => {
+    const { nextFlag } = props
+    return (
+        <>
+            <button className="next-button" onClick={nextFlag}>
+                Refresh
+            </button>
+        </>
+    )
+}
+
+const Guesses = (props: IGuessesProps) => {
+    const { guessesLeft } = props
+
+    return (
+        <>
+            <div className="guesses-container">
+                {Array.from({ length: guessesLeft }).map((_, i) => (
+                    <span key={i}>🌐</span>
+                ))}
+            </div>
+        </>
+    )
+}
+
 const OptionsGrid = (props: IOptionsGridProps) => {
     const { sessionCountryName } = props
 
     const [selection, setSelection] = useState<string | null>(null)
     const [isSelectionCorrect, setIsSelectionCorrect] = useState<boolean>(false)
-    const [emoji, setEmoji] = useState<string>('🌐')
+
+    const [lives, setLives] = useState<number>(4)
 
     const sessionPoolRaw = [...countriesPool, sessionCountryName]
     const sessionPool = sessionPoolRaw.sort()
@@ -33,7 +63,11 @@ const OptionsGrid = (props: IOptionsGridProps) => {
     useEffect(() => {
         if (selection === sessionCountryName) {
             setIsSelectionCorrect(true)
-            setEmoji('🤗')
+        } else {
+            setLives(lives - 1)
+        }
+        if (lives === 1) {
+            setIsSelectionCorrect(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selection])
@@ -46,7 +80,10 @@ const OptionsGrid = (props: IOptionsGridProps) => {
 
     return (
         <>
-            <h2>{emoji}</h2>
+            <Guesses guessesLeft={lives} />
+            <h4>
+                {!isSelectionCorrect ? `You have ${lives} guesses left.` : ''}
+            </h4>
             {!isSelectionCorrect ? (
                 <div className="options-grid">
                     {sessionPool.map((country) => (
@@ -55,13 +92,15 @@ const OptionsGrid = (props: IOptionsGridProps) => {
                             countryName={country}
                             onClick={() => {
                                 handleCountrySelection(country)
-                                if (selection !== 'Mauritius') setEmoji('😱')
                             }}
                         />
                     ))}
                 </div>
             ) : (
-                <h3>Indeed, this is {sessionCountryName}'s flag!</h3>
+                <h3>
+                    {lives === 0 ? '💀 You lost. ' : '😁 '}
+                    This was {sessionCountryName}'s flag!{' '}
+                </h3>
             )}
         </>
     )

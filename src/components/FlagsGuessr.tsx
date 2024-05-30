@@ -1,6 +1,6 @@
 import { countryNamesAndCode } from '../data/allCountries'
 import CountriesGrid from './CountriesGrid'
-import OptionsGrid from './OptionsGrid'
+import OptionsGrid, { NextButton } from './OptionsGrid'
 
 import './styles/FlagsGuessr.css'
 
@@ -12,10 +12,24 @@ const FlagsGuessr = () => {
 
     return (
         <>
-            <main className="flags-guessr-main">
-                <CountriesGrid sessionCountry={sessionCountry} />
-                <OptionsGrid sessionCountryName={sessionCountry.name} />
-            </main>
+            <div className="flags-guessr-container">
+                <main className="flags-guessr-main">
+                    <CountriesGrid sessionCountry={sessionCountry} />
+                    <OptionsGrid sessionCountryName={sessionCountry.name} />
+                    <NextButton nextFlag={() => window.location.reload()} />
+                </main>
+                <footer>
+                    Thanks for playing! Contribute to the&nbsp;
+                    <a
+                        href="https://github.com/wchadwick/flags-guessr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub repository
+                    </a>
+                    🫡
+                </footer>
+            </div>
         </>
     )
 }
