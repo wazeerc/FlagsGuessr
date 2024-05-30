@@ -1,15 +1,39 @@
 .flags-guessr-main {
-    color: aliceblue;
+    color: #eee;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     gap: 0.4rem;
-    height: 98vh;
     text-align: center;
 
     .flag {
-        width: 30rem;
+        width: 28rem;
+    }
+
+    .guesses-container {
+        display: flex;
+        gap: 2rem;
+        font-size: 1.4rem;
+        padding: 1.4rem 0 0 0;
+    }
+
+    h3 {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    h4 {
+        color: #8d8d8d;
+        margin: .4rem 0 1.6rem 0;
+        font-size: .8rem;
+        font-weight: 400;
+    }
+
+    .next-button {
+        width: 28rem;
+        margin: 1.2rem 0 2rem 0;
     }
 
     .options-grid {
@@ -17,21 +41,30 @@
         grid-template-columns: repeat(2, auto);
         grid-gap: 2rem;
 
+
         button {
-            width: 14rem;
+            width: 13rem;
         }
     }
 }
 
 @media screen and (max-width: 768px) {
     .flags-guessr-main {
+        overflow-y: hidden;
+        max-height: 100vh;
+
         .flag {
-            width: 13.4rem;
+            width: 18rem;
+        }
+
+        .guesses-container {
+            font-size: 1rem;
+            padding: 1rem 0 0 0;
         }
 
         .options-grid {
             button {
-                width: 9rem;
+                width: 8.1rem;
                 font-size: 1rem;
             }
         }
