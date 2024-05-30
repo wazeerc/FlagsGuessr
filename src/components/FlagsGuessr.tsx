@@ -21,7 +21,7 @@ const FlagsGuessr = () => {
                 <footer>
                     Thanks for playing! Contribute to the&nbsp;
                     <a
-                        href="https://github.com/wchadwick/flags-guessr"
+                        href="https://github.com/wazeerc/FlagsGuessr"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
