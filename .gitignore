@@ -25,3 +25,7 @@ yarn-error.log*
 # ignore gh-pages and firebase dirs
 /.github
 /.firebase
+
+# ignore firebase configuration file
+/.firebaserc
+/.firebase.json

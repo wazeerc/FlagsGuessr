@@ -1,15 +1,57 @@
+.flags-guessr-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .flags-guessr-main {
-    color: aliceblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    color: #eee;
     gap: 0.4rem;
-    height: 98vh;
     text-align: center;
 
     .flag {
-        width: 30rem;
+        width: 28rem;
+        border-radius: .6rem;
+    }
+
+    .guesses-container {
+        display: flex;
+        gap: 2rem;
+        font-size: 1.2rem;
+        padding: 1.4rem 0 0 0;
+    }
+
+    h1 {
+        color: #e0e0e0;
+    }
+
+    h3 {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    h4 {
+        color: #8d8d8d;
+        margin: .4rem 0 1.6rem 0;
+        font-size: .8rem;
+        font-weight: 400;
+    }
+
+    .next-button {
+        width: 28rem;
+        margin: 1.2rem 0 1.8rem 0;
+        border-radius: .8rem;
+        border: 1px;
+        font-family: "Lato", sans-serif;
+        padding: .2rem;
+        color: #2d2d2d;
     }
 
     .options-grid {
@@ -17,23 +59,53 @@
         grid-template-columns: repeat(2, auto);
         grid-gap: 2rem;
 
+
         button {
-            width: 14rem;
+            width: 13rem;
+            border-radius: .8rem;
+            border: 1px;
+            font-family: "Lato", sans-serif;
+            padding: .3rem;
+            color: #2d2d2d;
         }
     }
 }
 
 @media screen and (max-width: 768px) {
+    .flags-guessr-container {
+        overflow: hidden;
+    }
+
     .flags-guessr-main {
         .flag {
-            width: 13.4rem;
+            width: 18rem;
+        }
+
+        .next-button {
+            width: 18.2rem;
+            font-size: .8rem;
+        }
+
+        .guesses-container {
+            font-size: 1rem;
+            padding: 1rem 0 0 0;
         }
 
         .options-grid {
             button {
-                width: 9rem;
-                font-size: 1rem;
+                width: 8.1rem;
+                font-size: .8rem;
             }
         }
     }
+}
+
+a {
+    color: #3a3a3a;
+}
+
+footer {
+    color: #303030;
+    font-size: .8rem;
+    padding-bottom: .4rem;
 }
