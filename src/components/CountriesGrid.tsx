@@ -1,13 +1,9 @@
-import { ICountryNamesAndCode } from '../interfaces/CountriesModel'
-import { getFlag } from '../utils/fetchData'
+import { useFlagsContext } from '../Context';
+import { getFlag } from '../utils/fetchData';
 
-interface ICountriesGridProps {
-    sessionCountry: ICountryNamesAndCode
-}
-
-const CountriesGrid = (props: ICountriesGridProps) => {
-    const { sessionCountry } = props
-    const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase())
+const CountriesGrid = () => {
+    const { sessionCountry } = useFlagsContext();
+    const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase());
 
     return (
         <>
@@ -17,10 +13,10 @@ const CountriesGrid = (props: ICountriesGridProps) => {
                     className="flag"
                     alt={sessionCountry.name}
                     src={sessionCountryFlag}
-                ></img>
+                />
             </section>
         </>
-    )
-}
+    );
+};
 
-export default CountriesGrid
+export default CountriesGrid;

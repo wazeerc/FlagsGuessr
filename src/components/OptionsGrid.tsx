@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import { countriesPool } from '../data/allCountries'
+import { useFlagsContext } from '../Context'
 
 interface ICountriesProps {
     countryName: string
@@ -49,34 +49,11 @@ const Guesses = (props: IGuessesProps) => {
     )
 }
 
-const OptionsGrid = (props: IOptionsGridProps) => {
-    const { sessionCountryName } = props
+const OptionsGrid = () => {
+    const { sessionCountry, lives, isSelectionCorrect, handleSelection } = useFlagsContext();
 
-    const [selection, setSelection] = useState<string | null>(null)
-    const [isSelectionCorrect, setIsSelectionCorrect] = useState<boolean>(false)
-
-    const [lives, setLives] = useState<number>(4)
-
-    const sessionPoolRaw = [...countriesPool, sessionCountryName]
-    const sessionPool = sessionPoolRaw.sort()
-
-    useEffect(() => {
-        if (selection === sessionCountryName) {
-            setIsSelectionCorrect(true)
-        } else {
-            setLives(lives - 1)
-        }
-        if (lives === 1) {
-            setIsSelectionCorrect(true)
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selection])
-
-    const handleCountrySelection = (selectedCountry: string) => {
-        if (!isSelectionCorrect) {
-            setSelection(selectedCountry)
-        }
-    }
+    const sessionPoolRaw = [...countriesPool, sessionCountry.name];
+    const sessionPool = sessionPoolRaw.sort();
 
     return (
         <>
@@ -90,20 +67,18 @@ const OptionsGrid = (props: IOptionsGridProps) => {
                         <CountriesOptions
                             key={country}
                             countryName={country}
-                            onClick={() => {
-                                handleCountrySelection(country)
-                            }}
+                            onClick={() => handleSelection(country)}
                         />
                     ))}
                 </div>
             ) : (
                 <h3>
                     {lives === 0 ? '💀 You lost. ' : '😁 '}
-                    This was {sessionCountryName}'s flag!{' '}
+                    This was {sessionCountry.name}'s flag!
                 </h3>
             )}
         </>
-    )
-}
+    );
+};
 
-export default OptionsGrid
+export default OptionsGrid;
