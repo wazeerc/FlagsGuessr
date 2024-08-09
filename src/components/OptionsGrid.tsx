@@ -6,10 +6,6 @@ interface ICountriesProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-interface IOptionsGridProps {
-    sessionCountryName: string
-}
-
 interface IGuessesProps {
     guessesLeft: number
 }
