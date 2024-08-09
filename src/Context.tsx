@@ -6,7 +6,7 @@ const LIVES: number = 3;
 const FlagsContext = createContext(
     {
         sessionCountry: countryNamesAndCode[Math.floor(Math.random() * countryNamesAndCode.length)],
-        lives: 3,
+        lives: LIVES,
         selection: null,
         isSelectionCorrect: false,
         handleNextFlag: () => {},
@@ -24,7 +24,7 @@ export const FlagsProvider = ({ children }: IFlagsContextProps) => {
     const [sessionCountry, setSessionCountry] = useState(
         countryNamesAndCode[Math.floor(Math.random() * countryNamesAndCode.length)]
     );
-    const [lives, setLives] = useState(3);
+    const [lives, setLives] = useState(LIVES);
     const [selection, setSelection] = useState(null);
     const [isSelectionCorrect, setIsSelectionCorrect] = useState(false);
 
@@ -32,7 +32,7 @@ export const FlagsProvider = ({ children }: IFlagsContextProps) => {
         setSessionCountry(
             countryNamesAndCode[Math.floor(Math.random() * countryNamesAndCode.length)]
         );
-        setLives(3);
+        setLives(LIVES);
         setSelection(null);
         setIsSelectionCorrect(false);
     };
