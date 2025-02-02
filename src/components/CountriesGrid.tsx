@@ -1,9 +1,9 @@
-import { useFlagsContext } from '../Context';
-import { getFlag } from '../utils/fetchData';
+import { useFlagsContext } from '../Context'
+import { getFlag } from '../utils/fetchData'
 
 const CountriesGrid = () => {
-    const { sessionCountry } = useFlagsContext();
-    const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase());
+    const { sessionCountry } = useFlagsContext()
+    const sessionCountryFlag = getFlag(sessionCountry.code.toLowerCase())
 
     return (
         <>
@@ -16,7 +16,7 @@ const CountriesGrid = () => {
                 />
             </section>
         </>
-    );
-};
+    )
+}
 
-export default CountriesGrid;
+export default CountriesGrid

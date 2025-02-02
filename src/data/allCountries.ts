@@ -22,4 +22,4 @@ while (countriesPool.length < numberOfCountriesToSelect) {
     }
 }
 
-export { countryNamesAndCode, countriesPool }
+export { countriesPool, countryNamesAndCode }
