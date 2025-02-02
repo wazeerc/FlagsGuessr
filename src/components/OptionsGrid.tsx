@@ -1,5 +1,4 @@
-import { countriesPool } from '../data/allCountries'
-import { useFlagsContext } from '../Context'
+import { useFlagsContext } from '../Context';
 
 interface ICountriesProps {
     countryName: string
@@ -46,10 +45,7 @@ const Guesses = (props: IGuessesProps) => {
 }
 
 const OptionsGrid = () => {
-    const { sessionCountry, lives, isSelectionCorrect, handleSelection } = useFlagsContext();
-
-    const sessionPoolRaw = [...countriesPool, sessionCountry.name];
-    const sessionPool = sessionPoolRaw.sort();
+    const { sessionCountry, lives, isSelectionCorrect, handleSelection, randomOptions } = useFlagsContext();
 
     return (
         <>
@@ -59,7 +55,7 @@ const OptionsGrid = () => {
             </h4>
             {!isSelectionCorrect ? (
                 <div className="options-grid">
-                    {sessionPool.map((country) => (
+                    {randomOptions.map((country) => (
                         <CountriesOptions
                             key={country}
                             countryName={country}

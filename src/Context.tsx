@@ -1,5 +1,6 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { countryNamesAndCode } from './data/allCountries';
+import { generateRandomOptions } from './utils/gameUtils';
 
 const LIVES: number = 3;
 
@@ -9,6 +10,7 @@ const FlagsContext = createContext(
         lives: LIVES,
         selection: null,
         isSelectionCorrect: false,
+        randomOptions: [] as string[],
         handleNextFlag: () => {},
         handleSelection: (country: string) => {}
     }
@@ -27,11 +29,12 @@ export const FlagsProvider = ({ children }: IFlagsContextProps) => {
     const [lives, setLives] = useState(LIVES);
     const [selection, setSelection] = useState(null);
     const [isSelectionCorrect, setIsSelectionCorrect] = useState(false);
+    const [randomOptions, setRandomOptions] = useState(generateRandomOptions(sessionCountry.name));
 
     const handleNextFlag = () => {
-        setSessionCountry(
-            countryNamesAndCode[Math.floor(Math.random() * countryNamesAndCode.length)]
-        );
+        const newSessionCountry = countryNamesAndCode[Math.floor(Math.random() * countryNamesAndCode.length)];
+        setSessionCountry(newSessionCountry);
+        setRandomOptions(generateRandomOptions(newSessionCountry.name));
         setLives(LIVES);
         setSelection(null);
         setIsSelectionCorrect(false);
@@ -58,6 +61,7 @@ export const FlagsProvider = ({ children }: IFlagsContextProps) => {
                 lives,
                 selection,
                 isSelectionCorrect,
+                randomOptions,
                 handleNextFlag,
                 handleSelection
             }}
