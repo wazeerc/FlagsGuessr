@@ -1,11 +1,11 @@
-import { useFlagsContext } from '../Context';
-import CountriesGrid from './CountriesGrid';
-import OptionsGrid, { NextButton } from './OptionsGrid';
+import { useFlagsContext } from '../Context'
+import CountriesGrid from './CountriesGrid'
+import OptionsGrid, { NextButton } from './OptionsGrid'
 
-import './styles/FlagsGuessr.css';
+import './styles/FlagsGuessr.css'
 
 const FlagsGuessr = () => {
-    const { handleNextFlag } = useFlagsContext();
+    const { handleNextFlag } = useFlagsContext()
 
     return (
         <div className="flags-guessr-container">
@@ -26,7 +26,7 @@ const FlagsGuessr = () => {
                 🫡
             </footer>
         </div>
-    );
-};
+    )
+}
 
-export default FlagsGuessr;
+export default FlagsGuessr

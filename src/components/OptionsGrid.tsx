@@ -1,4 +1,4 @@
-import { useFlagsContext } from '../Context';
+import { useFlagsContext } from '../Context'
 
 interface ICountriesProps {
     countryName: string
@@ -45,7 +45,13 @@ const Guesses = (props: IGuessesProps) => {
 }
 
 const OptionsGrid = () => {
-    const { sessionCountry, lives, isSelectionCorrect, handleSelection, randomOptions } = useFlagsContext();
+    const {
+        sessionCountry,
+        lives,
+        isSelectionCorrect,
+        handleSelection,
+        randomOptions,
+    } = useFlagsContext()
 
     return (
         <>
@@ -70,7 +76,7 @@ const OptionsGrid = () => {
                 </h3>
             )}
         </>
-    );
-};
+    )
+}
 
-export default OptionsGrid;
+export default OptionsGrid

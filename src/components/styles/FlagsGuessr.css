@@ -18,7 +18,7 @@
 
     .flag {
         width: 28rem;
-        border-radius: .6rem;
+        border-radius: 0.6rem;
     }
 
     .guesses-container {
@@ -39,18 +39,18 @@
 
     h4 {
         color: #8d8d8d;
-        margin: .4rem 0 1.6rem 0;
-        font-size: .8rem;
+        margin: 0.4rem 0 1.6rem 0;
+        font-size: 0.8rem;
         font-weight: 400;
     }
 
     .next-button {
         width: 28rem;
         margin: 1.2rem 0 1.8rem 0;
-        border-radius: .8rem;
+        border-radius: 0.8rem;
         border: 1px;
-        font-family: "Lato", sans-serif;
-        padding: .2rem;
+        font-family: 'Lato', sans-serif;
+        padding: 0.2rem;
         color: #2d2d2d;
     }
 
@@ -59,13 +59,12 @@
         grid-template-columns: repeat(2, auto);
         grid-gap: 2rem;
 
-
         button {
             width: 13rem;
-            border-radius: .8rem;
+            border-radius: 0.8rem;
             border: 1px;
-            font-family: "Lato", sans-serif;
-            padding: .3rem;
+            font-family: 'Lato', sans-serif;
+            padding: 0.3rem;
             color: #2d2d2d;
         }
     }
@@ -83,7 +82,7 @@
 
         .next-button {
             width: 18.2rem;
-            font-size: .8rem;
+            font-size: 0.8rem;
         }
 
         .guesses-container {
@@ -94,7 +93,7 @@
         .options-grid {
             button {
                 width: 8.1rem;
-                font-size: .8rem;
+                font-size: 0.8rem;
             }
         }
     }
@@ -106,6 +105,6 @@ a {
 
 footer {
     color: #303030;
-    font-size: .8rem;
-    padding-bottom: .8rem;
+    font-size: 0.8rem;
+    padding-bottom: 0.8rem;
 }
